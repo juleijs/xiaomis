@@ -1,0 +1,481 @@
+@mainColor:#ff6700;
+.topbar {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #333;
+    // position: relative;
+    // z-index: 9999;
+        .top_info {
+            >ul {
+                >li {
+                    float: left;
+                    margin-right: 8px;
+                    >a {
+                        color: #b0b0b0;
+                        // vertical-align: top;
+                        &:hover {
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+    .sign_login {
+        margin-left: 465px;
+       >a {
+            color: #b0b0b0;
+             &:hover {
+              color: #fff;
+            }
+       }
+        >span {
+            color: #b0b0b0;
+        }
+    }
+    .shop_car {
+        width: 120px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background-color:#334;
+        position: relative;
+        &:hover {
+          background-color: #fff;
+          >.icon_car {
+            >i {
+                &::before {
+                    color: @mainColor;
+                }
+            }
+            >a {
+                color: @mainColor;
+                  
+            }
+        }
+        }
+        >.icon_car {
+            >i {
+                line-height: 40px;
+                &::before {
+                    font-size: 16px;
+                    color: #b0b0b0;
+                }
+            }
+            >a {
+                color: #b0b0b0;
+                  
+            }
+        }
+        >.car_home {
+            color: #b0b0b0;
+            width: 316px;
+            height: 96px;
+            line-height: 96px;
+            text-align: center;
+            box-shadow: 0 0 5px 1px #ccc;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background-color: #fff;
+            display: none;
+            z-index: 99;
+           
+        }
+    }
+    
+}
+nav {
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+    position: relative;
+    >.top_nav {
+        >a {
+            &:first-child{
+                >img {
+                    margin-top: 22.5px;
+                }
+            }
+            &:nth-child(2){
+               >img {
+                    margin-top: 17px;
+                    margin-left: 10px;
+               }
+            }
+        }
+        >.header_nav {
+            >ul {
+                >li {
+                    float: left;
+                    font-size: 16px;
+                    padding: 0 10px;
+                }
+            }
+              >.top_menu {
+        position: absolute;
+        z-index: 101;
+        left:-154px;
+        top: 100px;
+        // top:-130px;
+        width: 125%;
+        height: 230px;
+        background-color: #fff;
+        box-shadow: 0 1px 5px #ccc;
+        display: none;
+        >ul {
+            padding: 30px 0 0 150px;
+            >li {
+                float: left;
+                padding:0 30px;
+                border-right: 1px solid #ccc;
+                &:last-of-type{
+                    border-right: none;
+                }
+                >a {
+                    display: block;
+                    width: 160px;
+                    height: 110px; 
+                    >img {
+                     width: 160px;
+                     height: 110px;
+                    }
+                } 
+                >div {
+                    width: 100%;
+                    height: 16px;
+                    text-align: center;
+                }
+                .name {
+                    margin-top: -15px;
+                }
+                .price {
+                    margin-top: 10px;
+                    color: @mainColor;
+                }
+                
+
+            }
+        }
+    }
+        }
+        >.head_search {
+            cursor: pointer;
+            width: 295px;
+            height: 50px;
+            margin: 25px 0;
+            border: 1px solid #e0e0e0;
+            position: relative;
+            
+            >input {
+                width: 240px;
+                height: 100%;
+                padding-left: 15px;
+            }
+            >label {
+                width: 50px;
+                height: 100%;
+                border-left:  1px solid #e0e0e0;
+                position: relative;
+                &:hover {
+                    background-color: @mainColor;
+                    >i {
+                        color: #fff;
+                    }
+                }
+                >i {
+                    font-size: 30px;
+                    position: absolute;
+                    right:8px;
+                    top: 10px;
+                }
+            }
+            .sample_goods {
+                position: absolute;
+                top: 16px;
+                left: 90px;
+                >li {
+                    float: left;
+                    height: 18px;
+                    line-height: 18px;
+                    background-color: #eee;
+                    margin-right: 5px;
+                    padding: 0 5px;
+                    &:hover {
+                        background-color: @mainColor;
+                        >a {
+                            color: #fff;
+                        }
+                    }
+                    >a {
+                        color: #757575;
+                    }
+                }
+            }
+            .search_result {
+                display: none;
+                position: absolute;
+                background-color: #fff;
+                top: 48px;
+                left: 0;
+                border: 1px solid @mainColor;
+                width: 244px;
+                z-index: 100;
+                // height: auto;
+                >li {
+                    line-height: 36px;
+                    .item_name {
+                        color: #000;
+                        padding-left: 10px;
+                    }
+                     .item_num {
+                         float: right;
+                        color: #bbb;
+                        padding-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+
+}
+// 轮播图区域
+#slide {
+    .site-category {
+        width: 235px;
+        height: 460px;
+        // background-color: transparent;
+        background-color: rgba(0, 0, 0, .3);
+        position: absolute;
+        padding: 20px 0;
+        z-index: 1;
+        .side-left {
+            >li {
+                width: 100%;
+                height: 42px;
+                line-height: 42px;
+                font-size: 14px;
+                text-align: center;
+                color: #fff;
+                cursor: pointer;
+                &:hover {
+                    background-color: @mainColor;
+                }
+            }
+        }
+        .site-category-detail {
+            display: none;
+            position: absolute;
+            height: 460px;
+            width: auto;
+            left: 235px;
+            top: 0;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+             box-shadow: 3px 5px 15px rgba(0,0,0,.2);
+            >ul {
+                float: left;
+                height: 460px;
+                width: 265px;
+                >li {
+                    padding: 0 20px;
+                    width: 265px;
+                    height: 460/6px;
+                    // line-height: 460/6px;
+                    background-color: #fff;
+                    >a:first-child {
+                        display: block;
+                        width: 170px;
+                        height: 40px;
+                        padding: 22px 0;
+                        >img {
+                            width: 40px;
+                            height: 40px;
+                            vertical-align: middle;
+                        }
+                        >span {
+                            font-size: 16px;
+                        }
+                    }
+                    >a:last-child {
+                        float: right;
+                        margin-top: -15px;
+                        width: 50px;
+                        height: 20px;
+                        text-align: center;
+                        color: @mainColor;
+                        border: 1px solid @mainColor;
+                        &:hover {
+                            color: #fff;
+                            background-color: @mainColor;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .slide {
+    // display: none;
+        width: 100%;
+        height: 460px;
+        background-color: #ccc;
+        position: relative;
+        .carousel-fade {
+            .carousel-inner {
+                .item {
+                    width: 100%;
+                    height: 460px;
+                    opacity: 0;
+                    transition-property: opacity;
+                }
+                .active {
+                    opacity: 1;
+                }
+                &.left,
+                &.right {
+                    left: 0;
+                    opacity: 0;
+                }
+                .next.left,
+                .prev.right {
+                    opacity: 1;
+                }
+            }
+            >a.carousel-control {
+                display: block;
+                width: 40px;
+                height:70px;
+                background-color: transparent;
+                position: absolute;
+                top: 195px;
+                &.left{
+                    left: 235px;
+                }
+                &.right{
+                    right: 0;
+                }
+            }
+        }
+    
+    }
+
+}
+
+// 子导航信息块
+.sub_nav {
+    width: 100%;
+    height: 170px;
+    margin: 20px 0;  
+    .sub_left {
+        background-color: #6f6f6f;
+        >ul {
+           width: 236px;
+           height: 171px;
+           >li {
+               width: 78px;
+               height: 85px;
+               float: left;
+               >a {
+                   display: block;
+                   margin-top: 15px;
+                   >i {
+                    color: #b0b0b0;
+                    font-size: 30px;
+                    margin:0 24px;
+                   }
+                   >p {
+                       margin-top: 5px;
+                       width: 78px;
+                       text-align: center;
+                       color: #b0b0b0;
+                   }
+                    &:hover {
+                        >i,
+                        >p {
+                            color: #fff;
+                        }
+                    }
+               }
+           }
+            .line_col {
+                float: left;
+                margin-top: 12px;
+                width: 1px;
+                height: 60px;
+                background-color: #bbb;
+            }
+            .line_row {
+                float: left;
+                margin:0 9px;
+                width: 60px;
+                height: 1px;
+                background-color: #bbb;
+            }
+        }
+    }
+    .sub_right {
+        >ul {
+            >li {
+                width: 315px;
+                height: 170px;
+                margin-left: 15px;
+                float: left;
+                >a {
+                    >img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 详细商品介绍区
+#good_products {
+    width: 100%;
+    // height:auto;
+    height: 1000px;
+    background-color:#f5f5f5;
+    .intelligent_container {
+        width: 100%;
+        height: auto;
+        padding-top: 60px;
+        margin-bottom: 25px;
+        .intelligent {
+            width: 100%;
+            height: 300px;
+            background-color:#ccc;
+            .intelligent_top {
+                height: 58px;
+                line-height: 58px;
+                background-color: #ddd;
+                >h3 {
+                    line-height: 58px;
+                    font-weight:300;
+                }
+                >a {
+                    float: right;
+                    display: block;
+                    >span {
+                         line-height: 58px;
+                        font-size: 16px;
+                        font-weight:300;
+                        >i {
+                            font-size: 20px;
+                            margin-left: 5px;
+                        }
+                    }
+                }
+            }
+            .intelligent_content {
+                
+            }
+        }
+    }
+}
+
+
+
+
