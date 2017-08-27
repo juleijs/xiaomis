@@ -1,0 +1,86 @@
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+img,
+ul,
+ol,
+li,
+form,
+label,
+input,
+header,
+nav,
+main,
+section,
+footer {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+ol,
+ul,
+li {
+  list-style: none;
+}
+input {
+  outline: none;
+}
+body {
+  line-height: 1.5;
+  background-color: #fff;
+  font-family: 'Microsoft Yahei';
+  font-size: 12px;
+  color: #333;
+}
+.container_center {
+  width: 1226px;
+  margin: 0 auto;
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+a:hover {
+  color: #ff6700;
+  text-decoration: none;
+}
+img {
+  vertical-align: top;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clearfix::before,
+.clearfix::after {
+  content: "";
+  display: block;
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+}
+.clearfix::after {
+  clear: both;
+}
+.clearfix {
+  *zoom: 1;
+}
+.container {
+  width: 1226px;
+}
+i,
+em {
+  font-style: normal;
+}

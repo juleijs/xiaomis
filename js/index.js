@@ -1,4 +1,5 @@
 $(function () {
+    var url = 'http://192.168.70.88:9900/api/';
     // 购物车出现 隐藏
     $('.shop_car').on({
         'mouseenter': function () {
@@ -11,7 +12,7 @@ $(function () {
 
     // Aajx获导行项
     $.ajax({
-        url: 'http://192.168.70.88:9900/api/nav',
+        url: url + 'nav',
         success: function (data) {
             var dataArr = JSON.parse(data);
             var html = '';
@@ -29,6 +30,8 @@ $(function () {
     //右侧搜索框聚焦
     $('.head_search input').on({
         'focus': function () {
+            $('.head_search').css('border', '1px solid #ff6670');
+            $('.head_search label').css('borderLeft', '1px solid #ff6670');
             $('.search_result').slideDown();
             // $('.head_search').css('border', '1px solid #ff670');
             $('.sample_goods').hide();
@@ -37,6 +40,8 @@ $(function () {
             $('.search_result').slideUp();
             $('.head_search input').val('');
             $('.sample_goods').show();
+            $('.head_search').css('border', '1px solid #e0e0e0');
+            $('.head_search label').css('borderLeft', '1px solid #e0e0e0');
         }
     })
     $('.search_result').on('click', 'li', function () {
@@ -49,7 +54,7 @@ $(function () {
         var typeValue = $(this).attr('type');
         // console.log(typeValue);
         $.ajax({
-            url: 'http://192.168.70.88:9900/api/nav',
+            url: url + 'nav',
             data: {
                 type: typeValue
             },
@@ -86,12 +91,12 @@ $(function () {
     })
     // 轮播图区域
     $.ajax({
-        url: 'http://192.168.70.88:9900/api/lunbo',
+        url: url + 'lunbo',
         dataType: "json",
         success: function (data) {
             // console.log(JSON.parse(data));
             // var itemDom = data;
-            console.log(data);
+            // console.log(data);
             $('#Carousel .carousel-inner a').each(function (index, ele) {
                 $(ele).attr('href', data[index].sourceUrl);
                 $(ele).find('img').attr('src', data[index].imgUrl);
@@ -100,7 +105,7 @@ $(function () {
     })
     // ajax获取轮播图侧边栏导航数据
     $.ajax({
-        url: 'http://192.168.70.88:9900/api/items',
+        url: url + 'items',
         success: function (data) {
             // console.log(data);
             var itemsDom = JSON.parse(data);
@@ -108,7 +113,7 @@ $(function () {
             for (var i = 0; i < itemsDom.length; i++) {
                 var itemsLi = itemsDom[i];
                 // console.log(itemsLi);
-                html += '<li type="' + itemsLi.type + '">' + itemsLi.content + '</li>';
+                html += '<li type="' + itemsLi.type + '">' + itemsLi.content + '<span>&gt;</span></li>';
                 $('.side-left').html(html);
             }
         }
@@ -118,7 +123,7 @@ $(function () {
         var typeValue = $(this).attr('type');
         // console.log(typeValue);
         $.ajax({
-            url: 'http://192.168.70.88:9900/api/items',
+            url: url + 'items',
             data: {
                 type: typeValue
             },
@@ -213,5 +218,173 @@ $(function () {
     })
     $('.site-category').on('mouseleave', function () {
         $('.site-category-detail').fadeOut(500);
+    })
+
+    // 智能硬件主体ajax获取数据
+    $.ajax({
+        dataType: 'json',
+        url: url + 'hardware',
+        success: function (data) {
+            $('.intelligent_list').html(template('template_show', data));
+            // console.log(data);
+        }
+    })
+    //搭配区域
+    $.ajax({
+        url: url + 'product',
+        dataType: 'json',
+        data: {
+            toptitle: 'match'
+        },
+        success: function (data) {
+            // console.log(data);
+            $('.collocation_container').html(template('template_collocation', data));
+            $('.collocation_top h3').html(data.topTitleName);
+            $('.collocation_sub li').first().addClass('active');
+            $('.collocation_list').on('mouseover', 'li', function () {
+                if ($(this).find('.review-content').html() == '') {
+                    $(this).find('.review').remove();
+                }
+            })
+            $('.collocation_sub').on('mouseover', 'li', function () {
+                $(this).addClass('active').siblings().removeClass('active');
+                $.ajax({
+                    url: url + 'product',
+                    dataType: 'json',
+                    data: {
+                        key: $(this).attr('key')
+                    },
+                    success: function (data) {
+                        // console.log(data);
+                        $('.collocation_list').html(template('template_subs', data));
+
+                    }
+                })
+            })
+        }
+    })
+
+    //配件区域
+    $.ajax({
+        url: url + 'product',
+        dataType: 'json',
+        data: {
+            toptitle: 'accessories'
+        },
+        success: function (data) {
+            // console.log(data);
+            $('.parts_container').html(template('template_parts', data));
+            $('.parts_top h3').html(data.topTitleName);
+            $('.parts_sub li').first().addClass('active');
+            $('.parts_list').on('mouseover', 'li', function () {
+                if ($(this).find('.review-content').html() == '') {
+                    $(this).find('.review').remove();
+                }
+            })
+            $('.parts_sub').on('mouseover', 'li', function () {
+                $(this).addClass('active').siblings().removeClass('active');
+                $.ajax({
+                    url: url + 'product',
+                    dataType: 'json',
+                    data: {
+                        key: $(this).attr('key')
+                    },
+                    success: function (data) {
+                        // console.log(data);
+                        $('.parts_list').html(template('template_subs', data));
+
+                    }
+                })
+            })
+        }
+    })
+
+    //周边区域
+    $.ajax({
+        url: url + 'product',
+        dataType: 'json',
+        data: {
+            toptitle: 'around'
+        },
+        success: function (data) {
+            // console.log(data);
+            $('.around_container').html(template('template_around', data));
+            $('.around_top h3').html(data.topTitleName);
+            $('.around_sub li').first().addClass('active');
+            $('.around_sub').on('mouseover', 'li', function () {
+                $(this).addClass('active').siblings().removeClass('active');
+                $.ajax({
+                    url: url + 'product',
+                    dataType: 'json',
+                    data: {
+                        key: $(this).attr('key')
+                    },
+                    success: function (data) {
+                        // console.log(data);
+                        $('.around_list').html(template('template_subs', data));
+                    }
+                })
+            })
+        }
+    })
+
+    //为你推荐区域
+    var current_page = 1;
+    for (var i = 1; i < 5; i++) {
+        var page = i
+    }
+
+    function getAjax() {
+        $.ajax({
+            url: url + 'recommend',
+            dataType: 'json',
+            data: {
+                page: 1
+            },
+            success: function (data) {
+                // console.log(data);
+                $('.info_list').html(template('template_info', data));
+            }
+        })
+    }
+
+    getAjax();
+    $('.info_top .button .next').on('click', function () {
+
+        if (current_page == 4) {
+            $(this).css('color', '#ddd');
+            alert('不好意思,这是最后一页哦!');
+            return;
+        } else {
+            $(this).css('color', '#777');
+            current_page++;
+            getAjax();
+            $('.info_list').animate({
+                left: '-1226px'
+            })
+        }
+    })
+    $('.info_top .button .prev').on('click', function () {
+
+        if (current_page == 1) {
+            $(this).css('color', '#ddd');
+            alert('不好意思,这是第一页哦!');
+            return;
+        } else {
+            $(this).css('color', '#777');
+            current_page--;
+            getAjax();
+        }
+    })
+
+
+    //热门产品区域
+    $.ajax({
+        url: url + 'hotcomment',
+        dataType: 'json',
+        success: function (data) {
+            // console.log(data);
+            $('.hot_list').html(template('template_hot', data));
+        }
     })
 })
