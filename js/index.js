@@ -330,27 +330,23 @@ $(function () {
 
     //为你推荐区域
     var current_page = 1;
-    for (var i = 1; i < 5; i++) {
-        var page = i
-    }
 
     function getAjax() {
         $.ajax({
             url: url + 'recommend',
             dataType: 'json',
             data: {
-                page: 1
+                page: current_page
             },
             success: function (data) {
                 // console.log(data);
-                $('.info_list').html(template('template_info', data));
+                $('.info_list').append(template('template_info', data));
             }
         })
     }
 
     getAjax();
     $('.info_top .button .next').on('click', function () {
-
         if (current_page == 4) {
             $(this).css('color', '#ddd');
             alert('不好意思,这是最后一页哦!');
@@ -358,6 +354,7 @@ $(function () {
         } else {
             $(this).css('color', '#777');
             current_page++;
+            console.log(current_page);
             getAjax();
             $('.info_list').animate({
                 left: '-1226px'
@@ -365,7 +362,6 @@ $(function () {
         }
     })
     $('.info_top .button .prev').on('click', function () {
-
         if (current_page == 1) {
             $(this).css('color', '#ddd');
             alert('不好意思,这是第一页哦!');
@@ -373,10 +369,14 @@ $(function () {
         } else {
             $(this).css('color', '#777');
             current_page--;
+            console.log(current_page);
             getAjax();
+            $('.info_list').animate({
+                left: '+0px'
+            })
         }
     })
-
+    // console.log(current_page);
 
     //热门产品区域
     $.ajax({
@@ -386,5 +386,50 @@ $(function () {
             // console.log(data);
             $('.hot_list').html(template('template_hot', data));
         }
+    })
+    //内容区域
+    $.ajax({
+        url: url + 'content',
+        dataType: 'json',
+        success: function (data) {
+            // console.log(data);
+            for (var i = 0; i < data.contents.length; i++) {
+                for (var j = 0; j < data.contents.length; j++) {
+                    $('.swiper-wrapper').html(template('li_template', data.contents[j].list))
+                    // console.log(template('li_template', data.contents[j].list));
+                }
+                $('.body_list').html(template('content_template', data));
+            }
+            console.log($('.body_list').html());
+        }
+    })
+    //内容区域轮播图
+    var mySwiper = new Swiper('.swiper-container', {
+        // direction: 'vertical',
+        // loop: true,
+        // 如果需要分页器
+        pagination: '.swiper-pagination',
+
+        // 如果需要前进后退按钮
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+
+    });
+    //视频区域
+    $.ajax({
+        url: url + 'video',
+        dataType: 'json',
+        success: function (data) {
+            // console.log(data);
+            $('.videos_list').html(template('video_template', data));
+            $('.videos_list>li>a>i').click(function () {
+                $('video').slideDown();
+                $('.mask').fadeIn();
+            })
+        }
+    })
+    $('.mask').click(function () {
+        $('video').slideUp();
+        $('.mask').fadeOut();
     })
 })
