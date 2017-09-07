@@ -236,28 +236,27 @@
         </li>
         {{/each}}
     </script>
-    <script type="text/html" id="li_template">
-        {{each}}
-        <li class="swiper-slide">
-            <h5>{{$value.title}}</h5>
-            <p class="desc">{{$value.desc}}</p>
-            <p class="price">{{$value.price}}</p>
-            <a href="{{$value.sourceUrl}}">
-                 <img src="{{$value.imgUrl}}" alt="">
-            </a>
-        </li>
-        {{/each}}
-    </script>
+
     <!-- 内容区域模板 -->
     <script type="text/html" id="content_template">
         {{each contents}}
+
         <li class="{{$value.type}}">
             <div class="swiper_title">
-                <h4>{{$value.title}}</h4>
+                <h4 class="{{$value.type}}">{{$value.title}}</h4>
             </div>
             <div class="swiper-container">
                 <ul class="swiper-wrapper clearfix">
-
+                    {{each $value.list}}
+                    <li class="swiper-slide">
+                        <h5>{{$value.title}}</h5>
+                        <p class="desc">{{$value.desc}}</p>
+                        <p class="price">{{$value.price}}</p>
+                        <a href="{{$value.sourceUrl}}">
+                 <img src="{{$value.imgUrl}}" alt="">
+            </a>
+                    </li>
+                    {{/each}}
                 </ul>
                 <div class="swiper-pagination"></div>
 
@@ -572,52 +571,9 @@
                         <!-- 内容主体 -->
                         <div class="body_content">
                             <ul class="body_list clearfix">
-                                <!-- <li class="book">
-                                    <div class="swiper_title">
-                                        <h4>图书</h4>
-                                    </div>
-                                    <div class="swiper-container">
-                                        <ul class="swiper-wrapper clearfix">
-                                            <li class="swiper-slide">
-                                                <h5>新世纪福音战士OL</h5>
-                                                <p class="desc">EVA手游正版授权，同名主题，高能来袭！</p>
-                                                <p class="price">免费</p>
-                                                <a href="">
-                                                    <img src="//i3.mifile.cn/a4/7d47dde1-60fb-4ff3-8fa1-364cfc452457" alt="">
-                                                </a>
-                                            </li>
-                                            <li class="swiper-slide">
-                                                <h5>新世纪福音战士OL</h5>
-                                                <p class="desc">EVA手游正版授权，同名主题，高能来袭！</p>
-                                                <p class="price">免费</p>
-                                                <a href="">
-                                                    <img src="//i3.mifile.cn/a4/8e3584b6-3169-41c6-9356-939ec79aac2b" alt="">
-                                                </a>
-                                            </li>
-                                            <li class="swiper-slide">
-                                                <h5>新世纪福音战士OL</h5>
-                                                <p class="desc">EVA手游正版授权，同名主题，高能来袭！</p>
-                                                <p class="price">免费</p>
-                                                <a href="">
-                                                    <img src="//i3.mifile.cn/a4/T1dlVgBbbT1RXrhCrK.jpg" alt="">
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <div class="swiper-pagination"></div>
 
-                                        <div class="swiper-button-prev">
-                                            <i class="glyphicon glyphicon-chevron-left"></i>
-                                        </div>
-                                        <div class="swiper-button-next">
-                                            <i class="glyphicon glyphicon-chevron-right"></i>
-                                        </div>
-
-                                    </div>
-                                </li>
-                                <li></li>
-                                <li></li>
-                                <li></li> -->
                             </ul>
+
                         </div>
                     </div>
                 </div>

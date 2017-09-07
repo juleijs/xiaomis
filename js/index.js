@@ -387,34 +387,32 @@ $(function () {
             $('.hot_list').html(template('template_hot', data));
         }
     })
+
     //内容区域
     $.ajax({
         url: url + 'content',
         dataType: 'json',
         success: function (data) {
             // console.log(data);
-            for (var i = 0; i < data.contents.length; i++) {
-                for (var j = 0; j < data.contents.length; j++) {
-                    $('.swiper-wrapper').html(template('li_template', data.contents[j].list))
-                    // console.log(template('li_template', data.contents[j].list));
-                }
-                $('.body_list').html(template('content_template', data));
-            }
-            console.log($('.body_list').html());
+            // console.log(template('content_template', data));
+            $('.body_content>ul').html(template('content_template', data));
+            //内容区域轮播图
+
+            var mySwiper = new Swiper('.swiper-container', {
+                // direction: 'vertical',
+                // loop: true,
+                // 如果需要分页器
+                pagination: '.swiper-pagination',
+
+                // 如果需要前进后退按钮
+                // 如果需要前进后退按钮
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+
+            });
         }
     })
-    //内容区域轮播图
-    var mySwiper = new Swiper('.swiper-container', {
-        // direction: 'vertical',
-        // loop: true,
-        // 如果需要分页器
-        pagination: '.swiper-pagination',
 
-        // 如果需要前进后退按钮
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-
-    });
     //视频区域
     $.ajax({
         url: url + 'video',

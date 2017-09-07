@@ -3678,16 +3678,16 @@ nav > .top_nav > .head_search .search_result > li .item_num {
   font-weight: 400;
   font-size: 16px;
 }
-#good_products .contents_container .contents .body_content > ul > li .swiper_title.book {
+#good_products .contents_container .contents .body_content > ul > li .swiper_title > h4.book {
   color: #ffac13;
 }
-#good_products .contents_container .contents .body_content > ul > li .swiper_title.theme {
+#good_products .contents_container .contents .body_content > ul > li .swiper_title > h4.theme {
   color: #83c44e;
 }
-#good_products .contents_container .contents .body_content > ul > li .swiper_title.game {
+#good_products .contents_container .contents .body_content > ul > li .swiper_title > h4.game {
   color: #e53935;
 }
-#good_products .contents_container .contents .body_content > ul > li .swiper_title.app {
+#good_products .contents_container .contents .body_content > ul > li .swiper_title > h4.app {
   color: #2196f3;
 }
 #good_products .contents_container .contents .body_content > ul > li .swiper-container {
